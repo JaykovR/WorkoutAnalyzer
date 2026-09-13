@@ -9,3 +9,5 @@ You will also get a graph showing you your progress of your 1RM per workout.
 
 This is an MVP for this small program.
 *I plan to introduce an interface later on*
+
+Libraries used: Pandas | NumPy | Matplotlib | Tkinter
