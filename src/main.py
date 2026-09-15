@@ -26,17 +26,24 @@ class main:
             self.root.title("Workout Progress Analyzer")
             self.root.geometry("1920x1080")
 
+
             # Setting up main label
-            self.label = tk.Label(self.root, text = "Welcome to Workout Progress Analyzer", font=('Arial', 30))
+            self.label = tk.Label(self.root, text = "Welcome to Workout Progress Analyzer", 
+                                  font=('Arial', 30))
             self.label.pack(padx=20, pady=20)
 
             ## Button executes display_data for BenchPress data
-            self.button = tk.Button(self.root, text = "Display Data (Bench Press)", font=('Arial', 15), width= 20, height = 10, command= lambda: display_data("bench_press"))
+            self.button = tk.Button(self.root, text = "Display Data (Bench Press)", 
+                                    font=('Arial', 15), width= 20, height = 10, 
+                                    command= lambda: display_data("bench_press"))
             self.button.pack (padx=50, pady=20)
 
             ## Button executes display_data for DumbbellCurl data
-            self.button2 = tk.Button(self.root, text = "Display Data (Dumbbell Curl)", font=('Arial', 15), width= 20, height = 10, command= lambda: display_data("dumbbell_curl"))
+            self.button2 = tk.Button(self.root, text = "Display Data (Dumbbell Curl)", 
+                                     font=('Arial', 15), width= 20, height = 10, 
+                                     command= lambda: display_data("dumbbell_curl"))
             self.button2.pack (padx=50, pady=20)
+
 
             # Start the GUI loop
             self.root.mainloop()
@@ -54,9 +61,15 @@ def display_data(choice):
     weight = bp_data.Weight
     reps = bp_data.Reps
 
+    volume = (weight*reps).sum()
+    PR = (weight).max()
+
     # Averages
     print(f" Average weight:{weight.mean()} lbs")
     print(f"Average number of reps in working sets: {reps.mean()}")
+    print(f"Total volume: {volume} lbs")
+    print(f"Personal Record: {PR} lbs")
+
 
     # One Rep Max
     oneRepMax =  weight.mean() * (1 + 0.0333 * reps.mean())
